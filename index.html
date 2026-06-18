@@ -88,6 +88,18 @@
   </section>
 
   <script>
+    setInterval(() => {
+  const icon = document.getElementById('embeddedMessagingIconChat');
+
+  if (icon && icon.style.display === 'none') {
+    const frame = document.querySelector('.embeddedMessagingFrame');
+
+    if (frame && frame.classList.contains('isMinimized')) {
+      icon.style.display = 'block';
+    }
+  }
+}, 500);
+    
     function initEmbeddedMessaging() {
       try {
         embeddedservice_bootstrap.settings.language = 'en_US';
