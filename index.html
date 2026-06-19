@@ -1,129 +1,86 @@
-<!DOCTYPE html>
+<!-- CUSTOM CHAT BUTTON -->
+<button id="samudera-chat-button">
+  <img
+    src="https://i.ibb.co.com/JFFXhhbF/samudera.jpg"
+    alt="Chat">
+</button>
 
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Samudera - HOME</title>
+<style>
+#samudera-chat-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 80px;
+  height: 80px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  z-index: 999999;
+}
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
+#samudera-chat-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+</style>
 
-    body{
-      font-family:Arial, sans-serif;
-      overflow-x:hidden;
-    }
+<script>
+function initEmbeddedMessaging() {
+  try {
 
-    .navbar{
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      height:72px;
-      background:#ffffff;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:0 40px;
-      z-index:999;
-      box-shadow:0 2px 10px rgba(0,0,0,.08);
-    }
+    embeddedservice_bootstrap.settings.hideChatButtonOnLoad = true;
+    embeddedservice_bootstrap.settings.language = 'en_US';
 
-    .logo{
-      font-size:24px;
-      font-weight:bold;
-      color:#004f9f;
-    }
+    embeddedservice_bootstrap.init(
+      '00DHu00000Srzsm',
+      'TSC_Web_Samudera_Indonesia',
+      'https://treessolutionseve25.my.site.com/ESWTSCWebSamuderaIndon1781758211576',
+      {
+        scrt2URL: 'https://treessolutionseve25.my.salesforce-scrt.com'
+      }
+    );
 
-    .menu{
-      display:flex;
-      gap:32px;
-    }
-
-    .menu a{
-      text-decoration:none;
-      color:#333;
-      font-weight:500;
-    }
-
-    .hero{
-      width:100%;
-      height:100vh;
-      margin-top:72px;
-      overflow:hidden;
-    }
-
-    .hero img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-  </style>
-
-</head>
-<body>
-
-  <div class="navbar">
-    <div class="logo">SAMUDERA</div>
-
-<div class="menu">
-  <a href="#">About</a>
-  <a href="#">Shipping</a>
-  <a href="#">Ports</a>
-  <a href="#">Logistics</a>
-  <a href="#">Services</a>
-  <a href="#">Contact</a>
-</div>
-
-  </div>
-
-  <section class="hero">
-    <img
-      src="https://i.ibb.co.com/mrnQywT3/samudera-web.png"
-      alt="Samudera">
-  </section>
-
-  <script>
-setInterval(() => {
-  const icon = document.getElementById('embeddedMessagingIconChat');
-
-  if (icon && icon.style.display === 'none') {
-    const frame = document.querySelector('.embeddedMessagingFrame');
-
-    if (frame && frame.classList.contains('isMinimized')) {
-      icon.style.display = 'block';
-    }
+  } catch (err) {
+    console.error(err);
   }
-}, 500);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  document
+    .getElementById('samudera-chat-button')
+    .addEventListener('click', async () => {
+
+      try {
+
+        if (
+          window.embeddedservice_bootstrap &&
+          embeddedservice_bootstrap.utilAPI &&
+          embeddedservice_bootstrap.utilAPI.launchChat
+        ) {
+
+          await embeddedservice_bootstrap.utilAPI.launchChat();
+
+        } else {
+
+          console.log('launchChat API not available');
+          console.log(embeddedservice_bootstrap);
+
+        }
+
+      } catch (e) {
+
+        console.error(e);
+
+      }
+
+    });
+
+});
 </script>
 
-  <script>    
-    function initEmbeddedMessaging() {
-      try {
-        embeddedservice_bootstrap.settings.language = 'en_US';
-
-        embeddedservice_bootstrap.init(
-          '00DHu00000Srzsm',
-          'TSC_Web_Samudera_Indonesia',
-          'https://treessolutionseve25.my.site.com/ESWTSCWebSamuderaIndon1781758211576',
-          {
-            scrt2URL: 'https://treessolutionseve25.my.salesforce-scrt.com'
-          }
-        );
-      } catch (err) {
-        console.error('Error loading Embedded Messaging:', err);
-      }
-    }
-  </script>
-
-  <script
-    src="https://treessolutionseve25.my.site.com/ESWTSCWebSamuderaIndon1781758211576/assets/js/bootstrap.min.js"
-    onload="initEmbeddedMessaging()">
-  </script>
-
-</body>
-</html>
+<script
+  src="https://treessolutionseve25.my.site.com/ESWTSCWebSamuderaIndon1781758211576/assets/js/bootstrap.min.js"
+  onload="initEmbeddedMessaging()">
+</script>
